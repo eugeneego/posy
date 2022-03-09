@@ -1,0 +1,27 @@
+"commonSave" = "Save";
+"commonCancel" = "Cancel";
+
+"mainLayoutPrefix" = "Layout: ";
+"mainCaptureLayout" = "Capture layout";
+"mainCaptureLayoutToPasteboard" = "Capture layout to pasteboard";
+"mainCopyProcessesToPasteboard" = "Copy processes to pasteboard";
+"mainReloadConfiguration" = "Reload configuration";
+"mainOpenConfigurationFolder" = "Open configuration folder";
+"mainAbout" = "About Posy";
+"mainQuit" = "Quit";
+
+"aboutDescription" = "Your windows layout saver app";
+"aboutAuthor" = "by Eugene Egorov";
+
+"saveTitle" = "Save layout";
+"saveName" = "Name";
+
+"errorLoadConfiguration" = "Can't load configuration";
+"errorOpenConfigurationFolder" = "Can't open configuration folder";
+"errorLoadLayout" = "Can't read layout with name \"%@\"";
+"errorSaveLayout" = "Can't write layout with name \"%@\"";
+"errorCaptureLayout" = "Can't capture layout";
+"errorNoAppFolder" = "Can't create an application folder";
+"errorFileNotFound" = "File not found";
+"errorDataIsNotString" = "Can't convert data to string";
+"errorNoPermission" = "No permission for operation";
