@@ -89,10 +89,10 @@ enum AX {
         }
 
         func unpackAXValue(_ value: AnyObject) -> Any {
-            switch value {
-                case let value as AXUIElement:
+            switch (CFGetTypeID(value), value) {
+                case (AXUIElementGetTypeID(), let value as AXUIElement):
                     return Element(element: value)
-                case let value as AXValue:
+                case (AXValueGetTypeID(), let value as AXValue):
                     let type = AXValueGetType(value)
                     switch type {
                         case .cgPoint:
