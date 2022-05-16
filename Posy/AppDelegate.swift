@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func setupMenu() {
         statusItem.button?.image = R.I.logoStatus
-        statusItem.button?.imageScaling = .scaleProportionallyDown
+        statusItem.button?.imageScaling = .scaleProportionallyUpOrDown
         statusItem.menu = menu
         standardMenuItems = [
             NSMenuItem(title: R.S.mainCaptureLayout, action: #selector(capture), keyEquivalent: ""),
