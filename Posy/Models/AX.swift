@@ -13,6 +13,19 @@ enum AX {
         AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: prompt] as CFDictionary)
     }
 
+    static var screens: [Layout.Screen] {
+        var firstScreenFrame: NSRect?
+        return NSScreen.screens.map { screen in
+            var frame = screen.frame
+            if let firstScreenFrame = firstScreenFrame {
+                frame.origin.y = firstScreenFrame.size.height - frame.origin.y - frame.size.height
+            } else {
+                firstScreenFrame = frame
+            }
+            return Layout.Screen(name: screen.localizedName, frame: Layout.Rect(frame))
+        }
+    }
+
     static var applications: [Application] {
         NSWorkspace.shared.runningApplications
             .filter { $0.activationPolicy != .prohibited && !$0.isTerminated }

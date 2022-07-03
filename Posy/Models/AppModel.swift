@@ -30,8 +30,7 @@ class AppModel {
     }
 
     func copyProcessesToPasteboard() {
-        let layout = layouter.captureApplications()
-        let list = layout.applications
+        let list = layouter.captureApplications()
             .map { "\($0.bundleId), \($0.name)" }
             .joined(separator: "\n")
         toPasteboard(string: list)
