@@ -19,7 +19,7 @@ class SaveViewController: NSViewController {
     var doneAction: ((String) -> Void)?
 
     override func loadView() {
-        view = View(frame: NSRect(x: 0, y: 0, width: 256, height: 200))
+        view = BaseView(frame: NSRect(x: 0, y: 0, width: 256, height: 200))
     }
 
     override func viewDidLoad() {

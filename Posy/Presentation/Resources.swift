@@ -10,8 +10,13 @@ import Cocoa
 
 enum R {
     enum I {
-        static let logo: NSImage? = NSImage(named: "Icons/logo")
-        static let logoStatus: NSImage? = NSImage(named: "Icons/logo-status")
+        enum Name {
+            static let logo: String = "Icons/logo"
+            static let logoStatus: String = "Icons/logo-status"
+        }
+
+        static let logo: NSImage? = NSImage(named: Name.logo)
+        static let logoStatus: NSImage? = NSImage(named: Name.logoStatus)
     }
 
     enum S {

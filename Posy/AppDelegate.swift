@@ -6,12 +6,12 @@
 // License: MIT
 //
 
-import Cocoa
+import SwiftUI
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    private lazy var aboutViewController: AboutViewController = .init()
+    private lazy var aboutViewController: NSViewController = NSHostingController(rootView: AboutView())
     private let popover: Popover = .init()
     private let menu: NSMenu = .init()
     private var standardMenuItems: [NSMenuItem] = []

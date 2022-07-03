@@ -1,5 +1,5 @@
 //
-// View
+// BaseView
 // Posy
 //
 // Copyright (c) 2021 Eugene Egorov.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class View: NSView {
+class BaseView: NSView {
     override var isFlipped: Bool {
         true
     }
