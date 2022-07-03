@@ -152,12 +152,6 @@ multiline_arguments:
 reporter: 'xcode'
 
 custom_rules:
-  comments_space:
-    name: 'Space After Comment'
-    regex: '(^ *//\w+)'
-    message: 'There should be a space after //'
-    severity: warning
-
   empty_first_line:
     name: 'Empty First Line'
     regex: '(^[ a-zA-Z ]*(?:protocol|extension|class|struct|func) [ a-zA-Z0-9:,<>\.\(\)\"-=`]*\{\n( *)?\n)'
