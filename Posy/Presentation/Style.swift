@@ -21,16 +21,4 @@ enum Style {
     static let grid8: CGFloat = grid * 8
     static let grid9: CGFloat = grid * 9
     static let grid10: CGFloat = grid * 10
-
-    enum Button {
-        enum Height {
-            static let normal: CGFloat = grid4
-        }
-    }
-
-    enum Field {
-        enum Height {
-            static let normal: CGFloat = grid3
-        }
-    }
 }

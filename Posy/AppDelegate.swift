@@ -111,14 +111,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func capture() {
         guard model.hasPermissions() else { return }
 
-        let saveViewController = SaveViewController()
-        saveViewController.cancelAction = { [weak self] in
-            self?.popover.hide()
-        }
-        saveViewController.doneAction = { [weak self] name in
-            self?.saveLayout(name: name)
-        }
-        popover.show(viewController: saveViewController, from: statusItem.button)
+        let saveView = SaveView(
+            cancel: { [weak self] in self?.popover.hide() },
+            save: { [weak self] name in self?.saveLayout(name: name) }
+        )
+        popover.show(viewController: NSHostingController(rootView: saveView), from: statusItem.button)
     }
 
     private func saveLayout(name: String) {
