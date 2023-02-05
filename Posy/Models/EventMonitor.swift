@@ -23,14 +23,13 @@ class EventMonitor {
     }
 
     func start() {
-        guard let handler = handler, monitor == nil else { return }
+        guard let handler, monitor == nil else { return }
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
     }
 
     func stop() {
-        if let monitor = monitor {
-            NSEvent.removeMonitor(monitor)
-        }
-        monitor = nil
+        guard let monitor else { return }
+        NSEvent.removeMonitor(monitor)
+        self.monitor = nil
     }
 }

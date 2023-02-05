@@ -38,10 +38,10 @@ struct SaveView: View {
                 Button(R.S.commonSave) { saveAction() }
                     .buttonStyle(.borderedProminent)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(width: 256)
-        .padding(Style.grid2)
+            .frame(width: 256)
+            .padding(Style.grid2)
     }
 
     private func saveAction() {

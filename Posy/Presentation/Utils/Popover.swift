@@ -21,11 +21,12 @@ class Popover {
     func show(viewController: NSViewController, from view: NSView?) {
         if popover.isShown && popover.contentViewController == viewController {
             hide()
-        } else {
-            guard let view = view else { return }
+        } else if let view {
             popover.contentViewController = viewController
             eventMonitor.start()
             popover.show(relativeTo: view.bounds, of: view, preferredEdge: .minY)
+        } else {
+            hide()
         }
     }
 

@@ -45,9 +45,9 @@ struct AboutView: View {
             Text(version)
                 .font(.body)
         }
-        .multilineTextAlignment(.center)
-        .padding(.all, Style.grid2)
-        .frame(maxWidth: 200)
-        .contentAutoHeight()
+            .multilineTextAlignment(.center)
+            .padding(.all, Style.grid2)
+            .frame(maxWidth: 200)
+            .contentAutoHeight()
     }
 }

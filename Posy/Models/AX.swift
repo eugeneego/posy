@@ -86,14 +86,14 @@ enum AX {
         func attributes() -> [String] {
             var names: CFArray?
             let error = AXUIElementCopyAttributeNames(element, &names)
-            guard error == .success, let names = names else { return [] }
+            guard error == .success, let names else { return [] }
             return names as [AnyObject] as? [String] ?? []
         }
 
         func attribute<T>(_ attribute: String) -> T? {
             var value: AnyObject?
             let error = AXUIElementCopyAttributeValue(element, attribute as CFString, &value)
-            guard error == .success, let value = value else { return nil }
+            guard error == .success, let value else { return nil }
             return unpackAXValue(value) as? T
         }
 
@@ -103,59 +103,59 @@ enum AX {
 
         func unpackAXValue(_ value: AnyObject) -> Any {
             switch (CFGetTypeID(value), value) {
-                case (AXUIElementGetTypeID(), let value as AXUIElement):
-                    return Element(element: value)
-                case (AXValueGetTypeID(), let value as AXValue):
-                    let type = AXValueGetType(value)
-                    switch type {
-                        case .cgPoint:
-                            var result = CGPoint.zero
-                            _ = AXValueGetValue(value, type, &result)
-                            return result
-                        case .cgSize:
-                            var result = CGSize.zero
-                            _ = AXValueGetValue(value, type, &result)
-                            return result
-                        case .cgRect:
-                            var result = CGRect.zero
-                            _ = AXValueGetValue(value, type, &result)
-                            return result
-                        case .cfRange:
-                            var result = CFRange()
-                            _ = AXValueGetValue(value, type, &result)
-                            return result
-                        case .illegal:
-                            return value
-                        case .axError:
-                            var result = AXError.success
-                            _ = AXValueGetValue(value, type, &result)
-                            return result
-                        @unknown default:
-                            return value
-                    }
-                default:
+            case (AXUIElementGetTypeID(), let value as AXUIElement):
+                return Element(element: value)
+            case (AXValueGetTypeID(), let value as AXValue):
+                let type = AXValueGetType(value)
+                switch type {
+                case .cgPoint:
+                    var result = CGPoint.zero
+                    _ = AXValueGetValue(value, type, &result)
+                    return result
+                case .cgSize:
+                    var result = CGSize.zero
+                    _ = AXValueGetValue(value, type, &result)
+                    return result
+                case .cgRect:
+                    var result = CGRect.zero
+                    _ = AXValueGetValue(value, type, &result)
+                    return result
+                case .cfRange:
+                    var result = CFRange()
+                    _ = AXValueGetValue(value, type, &result)
+                    return result
+                case .illegal:
                     return value
+                case .axError:
+                    var result = AXError.success
+                    _ = AXValueGetValue(value, type, &result)
+                    return result
+                @unknown default:
+                    return value
+                }
+            default:
+                return value
             }
         }
 
         func packAXValue(_ value: Any) -> AnyObject {
             switch value {
-                case let value as Element:
-                    return value.element
-                case var value as CFRange:
-                    guard let axValue = AXValueCreate(.cfRange, &value) else { break }
-                    return axValue
-                case var value as CGPoint:
-                    guard let axValue = AXValueCreate(.cgPoint, &value) else { break }
-                    return axValue
-                case var value as CGRect:
-                    guard let axValue = AXValueCreate(.cgRect, &value) else { break }
-                    return axValue
-                case var value as CGSize:
-                    guard let axValue = AXValueCreate(.cgSize, &value) else { break }
-                    return axValue
-                default:
-                    break
+            case let value as Element:
+                return value.element
+            case var value as CFRange:
+                guard let axValue = AXValueCreate(.cfRange, &value) else { break }
+                return axValue
+            case var value as CGPoint:
+                guard let axValue = AXValueCreate(.cgPoint, &value) else { break }
+                return axValue
+            case var value as CGRect:
+                guard let axValue = AXValueCreate(.cgRect, &value) else { break }
+                return axValue
+            case var value as CGSize:
+                guard let axValue = AXValueCreate(.cgSize, &value) else { break }
+                return axValue
+            default:
+                break
             }
             return value as AnyObject
         }
@@ -168,8 +168,8 @@ extension AX.Element {
             attribute(kAXTitleAttribute) as String?
         }
         set {
-            guard let value = newValue else { return }
-            setAttribute(kAXTitleAttribute, value: value)
+            guard let newValue else { return }
+            setAttribute(kAXTitleAttribute, value: newValue)
         }
     }
 
@@ -178,8 +178,8 @@ extension AX.Element {
             attribute(kAXPositionAttribute)
         }
         set {
-            guard let value = newValue else { return }
-            setAttribute(kAXPositionAttribute, value: value)
+            guard let newValue else { return }
+            setAttribute(kAXPositionAttribute, value: newValue)
         }
     }
 
@@ -188,8 +188,8 @@ extension AX.Element {
             attribute(kAXSizeAttribute)
         }
         set {
-            guard let value = newValue else { return }
-            setAttribute(kAXSizeAttribute, value: value)
+            guard let newValue else { return }
+            setAttribute(kAXSizeAttribute, value: newValue)
         }
     }
 }

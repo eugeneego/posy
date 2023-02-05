@@ -1,10 +1,8 @@
 disabled_rules:
   - nesting
   - redundant_string_enum_value
-  - superfluous_disable_command
   - todo
   - trailing_comma
-  - type_body_length
   - let_var_whitespace
 
 opt_in_rules:
@@ -72,9 +70,6 @@ trailing_semicolon: error
 vertical_whitespace:
   max_empty_lines: 1
   severity: warning
-
-switch_case_alignment:
-  indented_cases: true
 
 comma: error
 colon:

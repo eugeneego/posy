@@ -18,10 +18,10 @@ enum AppError: Error {
 extension AppError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-            case .noAppFolder: return R.S.errorNoAppFolder
-            case .fileNotFound: return R.S.errorFileNotFound
-            case .dataIsNotString: return R.S.errorDataIsNotString
-            case .noPermission: return R.S.errorNoPermission
+        case .noAppFolder: return R.S.errorNoAppFolder
+        case .fileNotFound: return R.S.errorFileNotFound
+        case .dataIsNotString: return R.S.errorDataIsNotString
+        case .noPermission: return R.S.errorNoPermission
         }
     }
 }
